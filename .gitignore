@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.next-test/
+.env*
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
+*.log
+.DS_Store
+*.pem
+.fix-backup.json
+.verification/
+playwright-report/
+test-results/

@@ -1,0 +1,51 @@
+{
+  "name": "notevault",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "prisma generate && next build",
+    "start": "next start --hostname 127.0.0.1",
+    "lint": "biome check app lib prisma tests types proxy.ts --diagnostic-level=error",
+    "format": "biome format --write app lib prisma tests types proxy.ts",
+    "typecheck": "next typegen && tsc --noEmit",
+    "db:up": "docker compose up -d --wait",
+    "db:down": "docker compose down",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "tsx --env-file=.env prisma/seed.ts",
+    "db:reset": "prisma migrate reset --force --skip-seed && npm run db:seed",
+    "test": "node tests/run-matrix.mjs",
+    "test:e2e": "playwright test",
+    "db:studio": "prisma studio --hostname 127.0.0.1 --browser none"
+  },
+  "dependencies": {
+    "@prisma/client": "6.19.0",
+    "bcrypt": "^6.0.0",
+    "next": "16.4.3",
+    "next-auth": "^4.24.15",
+    "rate-limiter-flexible": "^11.2.4",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.2",
+    "@playwright/test": "1.56.1",
+    "@tailwindcss/turbopack": "^4",
+    "@types/bcrypt": "^6.0.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "prisma": "6.19.0",
+    "tailwindcss": "^4",
+    "tsx": "4.20.6",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=22 <25"
+  },
+  "overrides": {
+    "effect": "^3.20.0",
+    "deepmerge-ts": "^8.0.0"
+  }
+}

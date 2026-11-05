@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique
+  name String
+  password String
+  notes Note[]
+}
+model Note {
+  id Int @id @default(autoincrement())
+  title String @db.VarChar(200)
+  content String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
+}
+model SecurityAuditEvent {
+  id Int @id @default(autoincrement())
+  eventType String
+  timestamp DateTime @default(now())
+  account String?
+  requestPath String
+  method String
+  outcome String
+}
