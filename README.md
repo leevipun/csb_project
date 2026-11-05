@@ -13,7 +13,7 @@ Start Docker before continuing. On Windows, use Linux containers.
 ## 1. Download the project
 
 ```sh
-git clone https://github.com/leevipun/csb-project
+git clone https://github.com/leevipun/csb_project
 cd csb_project
 npm ci
 ```
